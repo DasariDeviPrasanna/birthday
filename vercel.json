@@ -28,6 +28,10 @@
     {
       "src": "*.png",
       "use": "@vercel/static"
+    },
+     {
+      "src": "*.svg",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
