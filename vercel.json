@@ -2,13 +2,21 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.html",
+      "src": "/index.html",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "handle": "filesystem"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/index.html",
+      "dest": "/index.html"
     },
     {
       "src": "/loading.html",
@@ -28,7 +36,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/loading.html"
+      "dest": "/index.html"
     }
   ]
 } 
