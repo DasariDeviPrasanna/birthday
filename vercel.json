@@ -2,14 +2,33 @@
   "version": 2,
   "builds": [
     {
-      "src": "book.html",
+      "src": "index.html",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(index.html)",
+      "handle": "filesystem"
+    },
+    {
+      "src": "/loading.html",
+      "dest": "/loading.html"
+    },
+    {
+      "src": "/main.html",
+      "dest": "/main.html"
+    },
+    {
+      "src": "/main2.html",
+      "dest": "/main2.html"
+    },
+    {
+      "src": "/book.html",
       "dest": "/book.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/loading.html"
     }
   ]
-}  
+} 
