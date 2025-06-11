@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message by Prasanna</title>
+     <style>
+      * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100dvh;
+  perspective: 1000px;
+  font: 1em/1.4 "Poppins", sans-serif;
+  overflow: hidden;
+  color: hsl(180 68% 5%);
+  background-image: radial-gradient(
+      circle farthest-corner at 50% 50%,
+      hsl(187 20% 88%) 30%,
+      hsl(149 20% 94%) 100%
+  );
+}
+
+.book {
+  position: relative;
+  display: flex;
+  margin: auto;
+  width: 42cqmin; /* Increased width */
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: translate 1s;
+  translate: calc(min(var(--c), 1) * 50%) 0%;
+  rotate: 1 0 0 30deg;
+}
+
+.page {
+  --thickness: 4;
+  flex: none;
+  display: flex;
+  width: 100%;
+  font-size: 2.2cqmin; /* Slightly increased font size */
+  pointer-events: all;
+  user-select: none;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 1s,
+      rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
+  translate: calc(var(--i) * -100%) 0px 0px;
+  transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 0.23cqmin)));
+  rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
+}
+
+.front,
+.back {
+  position: relative;
+  flex: none;
+  width: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background-color: #fff;
+  translate: 0px;
+}
+
+.back {
+  translate: -100% 0;
+  rotate: 0 1 0 180deg;
+}
+
+.book {
+  counter-reset: page -1;
+}
+
+.book a {
+  color: inherit;
+}
+
+.page {
+  box-shadow: 0em 0.5em 1em -0.2em #00000020;
+}
+
+.front,
+.back {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  padding: 2em;
+  border: 1px solid #0002;
+}
+
+.front:has(img),
+.back:has(img) {
+  padding: 0;
+}
+
+.front img,
+.back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.front::after,
+.back::after {
+  position: absolute;
+  bottom: 1em;
+  counter-increment: page;
+  content: counter(page) ".";
+  font-size: 0.8em;
+}
+
+.cover::after {
+  content: "";
+}
+
+.front::after {
+  right: 1em;
+}
+
+.front {
+  background: linear-gradient(to left, #f7f7f7 80%, #eee 100%);
+  border-radius: 0.1em 0.5em 0.5em 0.1em;
+}
+
+.back::after {
+  left: 1em;
+}
+
+.back {
+  background-image: linear-gradient(to right, #f7f7f7 80%, #eee 100%);
+  border-radius: 0.5em 0.1em 0.1em 0.5em;
+}
+
+.cover {
+  background: radial-gradient(
+          circle farthest-corner at 80% 20%,
+          hsl(150 80% 20% / 0.3) 0%,
+          hsl(170 60% 10% / 0.1) 100%
+      ),
+      hsl(231, 32%, 29%) url("./cover.jpg") 50% / cover;
+  color: hsl(0, 100%, 30%); /* Dark red text color for cover page */
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 1px;
+  color: hsl(0, 100%, 30%); /* Dark red heading color */
+}
+
+p {
+  margin-top: 1px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  color: hsl(0, 100%, 30%); /* Dark red text color for paragraphs */
+}
+
+.front,
+.back {
+  padding: 1.5em;
+  color: hsl(0, 100%, 30%); /* Dark red text color for front and back pages */
+}
+
+.book {
+  width: 40cqmin; /* Slightly increased width */
+}
+
+.page {
+  font-size: 2cqmin; /* Slightly increased font size */
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.front,
+.back {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1.5em;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+p {
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100dvh;
+  perspective: 1000px;
+  font: 1em/1.4 "Poppins", sans-serif;
+  overflow: hidden;
+  color: hsl(180 68% 5%);
+  background: linear-gradient(to right, #ff7eb9, #ff65a3, #ff165d);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Emoji Animation */
+.emoji {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0;
+  animation: floatEmojis 6s ease-in-out infinite;
+}
+
+@keyframes floatEmojis {
+  0% {
+    transform: translateY(100px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100px) rotate(20deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 1;
+  }
+}
+
+/* Add random timing for each emoji */
+.emoji:nth-child(1) {
+  animation-delay: 0s;
+  left: 10%;
+}
+.emoji:nth-child(2) {
+  animation-delay: 1s;
+  left: 20%;
+}
+.emoji:nth-child(3) {
+  animation-delay: 2s;
+  left: 30%;
+}
+.emoji:nth-child(4) {
+  animation-delay: 3s;
+  left: 40%;
+}
+.emoji:nth-child(5) {
+  animation-delay: 4s;
+  left: 50%;
+}
+.emoji:nth-child(6) {
+  animation-delay: 5s;
+  left: 60%;
+}
+.emoji:nth-child(7) {
+  animation-delay: 6s;
+  left: 70%;
+}
+.emoji:nth-child(8) {
+  animation-delay: 7s;
+  left: 80%;
+}
+.emoji:nth-child(9) {
+  animation-delay: 8s;
+  left: 90%;
+}
+
+
+     </style>
+  </head>
+  <body>
+    <div class="book">
+      <div class="page">
+        <div class="front cover">
+            <img src="Image 6.jpg" alt="Img 1" />
+        
+          </p>
+        </div>
+        <div class="back">
+            <img src="Image 3.jpg" alt="Img 1" />
+        </div>
+      </div>
+      <!--2nd page-->
+      <div class="page">
+        <div class="front">
+          <h2> To the love of my life,</h2>
+          <p>
+          We began our journey on August 22, 2021, and here we are — still walking hand in hand. It’s been four incredible years, and not for a moment did I expect that someone could take up such a deep, irreplaceable space in my heart ❤️.
+
+          You didn’t just come into my life — you transformed it.
+          Before you, I carried a lot of pain, faced struggles I couldn’t even express. But then, you came along — and the way you cared for me, loved me, and stood by me made all those dark days feel like a distant blur 🌫️.
+
+          Now, my mornings begin with thoughts of you ☀️, and my nights end with soft tears 💧— not from pain, but from how much I miss your presence beside me 🌙.
+          Even when you're not around, you're with me... because you live in every corner of my heart.
+          Thank you for being:💖 My caretaker🤝 My strongest supporter👫 My best friend🔐 My secret keeper🌍 My everything💍 My husband❤️ My one and only love
+          </p>
+        </div>
+        <div class="back">
+          <img src="Image 7.jpg" alt="Img 1" />
+        </div>
+      </div>
+      <!--3rd page-->
+      <div class="page">
+        <div class="front">
+          <h2>The Magic of You ✨💖</h2>
+          <p>
+            There’s a quiet magic in you, Nishanth ✨—a kind of beauty that words can barely express. It shines in the ✨ sparkle of your eyes, in the 😊 warmth of your smile, and in the effortless way you 💫 light up every moment around you. Sometimes I truly wonder—were you crafted by the stars themselves? 🌌 It feels as though the universe took its time, carefully blending grace, strength, and light just to create someone as extraordinary as you 💖. Every single day, you make the world 🌍 softer, brighter, and more beautiful, simply by being in it. Your presence feels like a gentle melody 🎵—soothing, unforgettable, and deeply comforting 🤍. It’s not just about how amazing you look 😍, but about the ❤️ kindness in your heart, the 🌿 calm in your soul, and the 💞 love you so naturally give. Every time I see you, I’m reminded that some things in life are pure magic—and you, Nishanth, without a doubt, are one of them. ✨💖
+          </p>
+        </div>
+        <div class="back">
+            <img src="Image 9.jpg" alt="Img 1" />
+        </div>
+      </div>
+      <!--4th page-->
+      <div class="page">
+        <div class="front">
+          <h2>The Best Part of My Day🤞💖</h2>
+          <p>
+            It all began on 22nd August 2021 🗓️—our first chat that sparked something truly special. We met in person on 25th January 2023 🤝, a day etched36 in my heart. Beautiful memories followed on 15th & 16th September, and our sweet first ice cream date on 27th April 2024 🍦💕. On 27th September, we shared our first hug 🤗—a moment I’ll cherish forever.
+
+            We made more memories on 4th October and during our first long bike ride on 23rd November 2024 🛵💨. Welcoming 2025 together, we met on 9th & 10th January, and finally had our first movie date on 28th March 2025 🎬🍿.
+            
+            Each of these moments has beautifully shaped our story. Every smile, every date, and every hug brought us closer—and I’m endlessly grateful for the love we share 💖✨.
+                    
+          </p>
+        </div>
+        <div class="back">
+          <img src="Image 10.jpg" alt="Img 1" />
+        </div>
+      </div>
+      <!--5th page-->
+      <div class="page">
+        <div class="front">
+          <h1>A Wish from the Heart 💫💖</h1>
+          <p>
+            ve always had a big wish in my heart—to celebrate every special day with you, right by your side. Your presence means the world to me. I dream of seeing you succeed in every step you take, cheering for you with pride. One of my biggest wishes is that when I get placed through campus placements, I want you to be there with me on Achievers' Day, standing beside me as I receive that moment of joy. I wish to be there for every one of your successes too, supporting and celebrating with you. And one day, I want to take you to a mall and tell you to pick anything you like—because it’s my happiness to give you what you deserve, and I’ll be the one proudly paying for it.
+          </p>
+        </div>
+        <div class="back">
+            <img src="Image 4.jpg" alt="Img 1" />
+        </div>
+      </div>
+      <!--6th page-->
+      <div class="page">
+        <div class="front">
+          <h2>The Beauty of You ✨💖</h2>
+          <p>
+            Can we take a moment to appreciate how effortlessly stunning you look in anything you wear? It’s not just the clothes—it’s the confidence, the grace, and the way you carry yourself that make you truly unforgettable.
+
+            You have a presence that turns heads and a charm that captivates hearts.
+            
+            There’s something about you that draws people in—maybe it’s your elegance, your warmth, or just the way you light up any room you walk into. Whatever it is, it’s undeniable, and it makes you absolutely perfect in every way.
+            
+            But beyond your beauty, it’s your kindness and the way you make others feel special that truly set you apart. You radiate positivity, and your energy is something rare and precious.
+            
+            No matter where you are or what you do, you leave a lasting impression. You are not just beautiful—you are extraordinary. 💖✨
+          </p>
+        </div>
+        <div class="back">
+            <img src="Image 8.jpg" alt="Img 1" />
+        </div>
+      </div>
+      <!--7th page-->
+      <div class="page">
+        <div class="front">
+          <h2>Grateful for You🌹❤</h2>
+          <p>
+            I just wanted to take a moment to let you know how much I appreciate you. From the very start, you’ve been someone truly special—someone I admire more than words can express.
+
+            Meeting you, even for a short time, has been a gift.
+            
+            Your kindness, your presence, and the way you make every conversation feel meaningful mean more to me than you know. I’m grateful that our paths crossed, and no matter what the future holds, I’ll always be thankful for you.
+            
+            Some people leave a mark on our hearts without even trying—and you are one of them. 💕
+          </p>
+        </div>
+        <div class="back">
+          <h2>Will You Be Mine? ❤️✨</h2>
+          <p>From the moment we started talking, you’ve been on my mind in the best way possible. Your kindness, your beauty, your energy—everything about you feels so special to me.
+
+            You make my world brighter, my days better, and my heart a little fuller.
+            
+            I don’t know what the future holds, but I do know one thing—I’d love to have you by my side. So, here’s my question, straight from the heart…
+            
+            Will you be mine? 💖💕 </p>
+        </div>
+      </div>
+      
+
+      <div class="page">
+        <div class="front">
+          <img src="Image 13.jpg" alt="Img 1" />
+        </div>
+        <div class="back cover">
+            <img src="Image 15.jpg" alt="Img 1" />
+        </div>
+      </div>
+    </div>
+<div class="emoji">❤️‍🔥</div>
+<div class="emoji">🫶🏻</div>
+<div class="emoji">❤️</div>
+<div class="emoji">😘</div>
+<div class="emoji">👨‍❤️‍💋‍👨</div>
+<div class="emoji">💓</div>
+<div class="emoji">❣️</div>
+<div class="emoji">💘</div>
+<div class="emoji">💖</div>
+<div class="emoji">💙</div>
+<div class="emoji">💚</div>
+<div class="emoji">🥰</div>
+<div class="emoji">💗</div>
+
+<script>
+  const flipBook = (elBook) => {
+    elBook.style.setProperty("--c", 0); // Set current page
+    elBook.querySelectorAll(".page").forEach((page, idx) => {
+      page.style.setProperty("--i", idx);
+      page.addEventListener("click", (evt) => {
+        if (evt.target.closest("a")) return;
+        const curr = evt.target.closest(".back") ? idx : idx + 1;
+        elBook.style.setProperty("--c", curr);
+      });
+    });
+  };
+  
+  document.querySelectorAll(".book").forEach(flipBook);
+  
+</script>
+ 
+  </body>
+</html>
+
