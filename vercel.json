@@ -1,42 +1,15 @@
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "/index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/index.html",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/loading.html",
-      "dest": "/loading.html"
-    },
-    {
-      "src": "/main.html",
-      "dest": "/main.html"
-    },
-    {
-      "src": "/main2.html",
-      "dest": "/main2.html"
-    },
-    {
-      "src": "/book.html",
-      "dest": "/book.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+ {   
+    "version": 2,
+    "builds": [
+        {
+            "src": "index.html",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
+        }
+    ]
 } 
