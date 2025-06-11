@@ -4,6 +4,22 @@
         {
             "src": "index.html",
             "use": "@vercel/static"
+        },
+      {
+            "src": "loading.html",
+            "use": "@vercel/static"
+        },
+      {
+            "src": "main.html",
+            "use": "@vercel/static"
+        },
+      {
+            "src": "main2.html",
+            "use": "@vercel/static"
+        },
+      {
+            "src": "book.html",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
